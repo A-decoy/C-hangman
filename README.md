@@ -9,4 +9,4 @@ Ex. _ _ _ _ (trap)
 code will ask for input (please only put letters lowercase)
 
 things to add but may not:
-- adding the functionally of adding full words in the guess
+- adding the function of guessing full words in the guess
