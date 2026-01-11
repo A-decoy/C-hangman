@@ -6,6 +6,7 @@
 #include <stdbool.h>
 
 int getWord();
+void hangman(int numb);
 
 char global_realWord[99];
 char global_hide[99];
@@ -29,7 +30,9 @@ int main(){
 
     strcpy(temp, global_hide);
     
-    while(tries < 8 && strcmp(global_hide, global_realWord) != 0){
+    while(tries < 7 && strcmp(global_hide, global_realWord) != 0){
+
+        hangman(tries);
         
         for(int i = 0; i < digits; i++){
             printf("%c ", global_hide[i]);
@@ -42,7 +45,7 @@ int main(){
             }
         }
 
-        printf("\nNumber of tries: %d", (8 - tries));
+        printf("\nNumber of tries: %d", (7 - tries));
         
         while(true){
             printf("\nEnter letter: ");
@@ -72,7 +75,7 @@ int main(){
 
     }
 
-    if(tries == 8){
+    if(tries ==7){
         printf("sorry the man died :(\n");
     }
     else{
@@ -110,6 +113,28 @@ int getWord(){
     strcpy(global_realWord, list[(rand() % (count - 1))]);
 
     free(list);
+}
+
+void hangman(int numb){
+
+    const char *hangman[] = {
+        " +---+\n |   |\n |    \n |    \n |    \n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |    \n |    \n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |   |\n |    \n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |   |\\\n |    \n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |  /|\\\n |    \n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |  /|\\\n |    \\\n |    \n=========\n",
+
+        " +---+\n |   |\n |   O\n |  /|\\\n |  / \\\n |    \n=========\n"
+    };
+
+    printf("%s", hangman[numb]);
+
 }
 
 
